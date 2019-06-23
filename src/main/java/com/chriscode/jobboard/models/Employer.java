@@ -12,11 +12,13 @@ public class Employer {
 
     private String username;
     private String pwHash;
+    private int rating;
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public Employer() {}
 
-    public Employer(String username, String password) {
+
+    public Employer(String username, String password, int rating) {
 
         super();
 
@@ -26,6 +28,7 @@ public class Employer {
 
         this.username = username;
         this.pwHash = hashPassword(password);
+        this.rating = (rating * 5 )/ 5;
 
     }
 
@@ -53,6 +56,14 @@ public class Employer {
     @SuppressWarnings("unused")
     private void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public boolean isMatchingPassword(String password) {
